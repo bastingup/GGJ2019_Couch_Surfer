@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class SceneEvent : ScriptableObject
 {
-    public abstract void Play(UIRoot uiRoot);
+    public abstract void Play(Transform spawnRoot);
 }

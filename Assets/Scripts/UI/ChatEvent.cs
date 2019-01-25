@@ -12,25 +12,74 @@ public class ChatEvent : SceneEvent
 
     [SerializeField]
     private ChatFieldObject chatFieldPrefab;
-    [SerializeField]
-    private ChatEntryObject chatEntryPrefab;
 
     [SerializeField]
     private string partnerName;
 
-    public override void Play(UIRoot uiRoot)
+    [SerializeField]
+    private Sprite myFace, partnerFace;
+
+    [SerializeField]
+    private float timeToShowUntilLastMessage;
+
+    public override void Play(Transform spawnRoot)
     {
-        
+        Instantiate(chatFieldPrefab, spawnRoot).ShowEvent(this);
+    }
+
+    public ChatEntry[] ChatEntries {
+        get {
+            return chatEntries;
+        }
+    }
+    public string PartnerName {
+        get {
+            return partnerName;
+        }
+    }
+    public float TimeToShowUntilLastMessage {
+        get {
+            return timeToShowUntilLastMessage;
+        }
+    }
+    public Sprite MyFace {
+        get {
+            return myFace;
+        }
+    }
+    public Sprite PartnerFace {
+        get {
+            return partnerFace;
+        }
     }
 }
 
 [Serializable]
 public class ChatEntry
 {
-    public enum Sender { me, other}
-    public Sender sender;
+    public enum Sender { me, other }
 
     [SerializeField]
+    private Sender sender;
+    [SerializeField]
     private string message;
+    [SerializeField]
+    private float delay;
+
+    public Sender SenderType {
+        get {
+            return sender;
+        }
+    }
+    public string Message{
+        get {
+            return message;
+        }
+    }
+    public float Delay {
+        get {
+            return delay;
+        }
+    }
 
 }
