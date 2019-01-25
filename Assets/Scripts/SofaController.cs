@@ -17,17 +17,27 @@ public class SofaController : MonoBehaviour {
 
 	void Update ()
     {
-		if (Input.GetButton("Fire1") && grounded)
+		if (Input.GetButton("Drive") && grounded)
         {
             rb.AddForce(Vector3.forward * speed);
         }
-        if (Input.GetButtonDown("Fire2") && grounded)
+        if (Input.GetButtonDown("Jump") && grounded)
         {
             rb.AddForce(Vector3.up * jumpForce);
         }
-	}
+        if (Input.GetButton("Forward"))
+        {
+            rb.rotation *= Quaternion.Euler(0, 0, -80 * Time.deltaTime);
+        }
+        if (Input.GetButton("Backward"))
+        {
+            rb.rotation *= Quaternion.Euler(0, 0, 80 * Time.deltaTime);
+        }
 
-    void OnCollisionEnter(Collision collision)
+
+    }
+
+    void OnCollisionStay(Collision collision)
     {
         if (collision.collider.tag == "Ground")
         {
@@ -37,7 +47,10 @@ public class SofaController : MonoBehaviour {
 
     private void OnCollisionExit(Collision collision)
     {
-        grounded = false;
+        if (collision.collider.tag == "Ground")
+        {
+            grounded = false;
+        }
     }
 
     void SetUp()

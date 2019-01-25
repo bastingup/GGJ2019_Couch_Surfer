@@ -7,6 +7,7 @@ public class EnableSparks : MonoBehaviour
     [SerializeField]
     private Rigidbody rb;
     private ParticleSystem sparks;
+    private bool sparksGrounded;
 
     void Start()
     {
@@ -16,7 +17,7 @@ public class EnableSparks : MonoBehaviour
     private void Update()
     {
         // Enable particle sparks if rigidbody over certain velocity on z axis
-        if (rb.velocity.z < 0.5)
+        if (rb.velocity.z < 0.5 || sparksGrounded == false)
         {
             sparks.enableEmission = false;
         }
@@ -26,16 +27,17 @@ public class EnableSparks : MonoBehaviour
         }
 
         // Set the speed for the spark particles
-        if (rb.velocity.z > 10)
+        if (sparksGrounded == true)
         {
-            sparks.startSpeed = 10;
+            if (rb.velocity.z > 10)
+            {
+                sparks.startSpeed = 10;
+            }
+            else
+            {
+                sparks.startSpeed = rb.velocity.z;
+            }
         }
-        else
-        {
-            sparks.startSpeed = rb.velocity.z;
-        }
- 
-        Debug.Log(rb.velocity.z);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -43,12 +45,24 @@ public class EnableSparks : MonoBehaviour
         if (other.tag == "Ground" && rb.velocity.z > 1)
         {
             sparks.enableEmission = true;
+            sparksGrounded = true;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Ground")
+        {
+            sparksGrounded = false;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        sparks.enableEmission = false;
+        if (other.tag == "Ground")
+        {
+            sparks.enableEmission = false;
+        }
     }
 
     void SetUp()
