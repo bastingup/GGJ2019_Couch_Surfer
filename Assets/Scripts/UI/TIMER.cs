@@ -14,8 +14,7 @@ public class TIMER : MonoBehaviour
 
     [SerializeField]
     private GameObject startingPosition, grumble;
-    public int startMinutes, startingSeconds;
-    private int currentMinutes, currentSeconds;
+    public int startMinutes, startingSeconds, currentMinutes, currentSeconds;
     private Text timeDisplayed;
     private Color col;
     [SerializeField]
@@ -126,6 +125,7 @@ public class TIMER : MonoBehaviour
             else
             {
                 StartCoroutine(Homeless());
+                this.transform.Find("SOUND").GetComponent<UISounds>().PlayHomelessSound();
             }
         }
     }
