@@ -53,7 +53,7 @@ public class EnableSparks : MonoBehaviour
     {
         if (other.tag == "Ground")
         {
-            sparksGrounded = false;
+            sparksGrounded = true;
         }
     }
 
@@ -61,7 +61,7 @@ public class EnableSparks : MonoBehaviour
     {
         if (other.tag == "Ground")
         {
-            sparks.enableEmission = false;
+            sparksGrounded = false;
         }
     }
 
