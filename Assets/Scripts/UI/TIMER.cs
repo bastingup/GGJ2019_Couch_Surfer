@@ -5,8 +5,13 @@ using UnityEngine.UI;
 
 public class TIMER : MonoBehaviour
 {
+    private enum timeState
+    {
+        okay, late, hurry
+    }
+
     [SerializeField]
-    private GameObject startingPosition;
+    private GameObject startingPosition, grumble;
     public int startMinutes, startingSeconds;
     private int currentMinutes, currentSeconds;
     private Text timeDisplayed;
@@ -14,7 +19,10 @@ public class TIMER : MonoBehaviour
     [SerializeField]
     private readonly FloatReference addTime;
     private bool endingGame = false, resettingGame = false;
-
+    [SerializeField]
+    private float fadeTimeForMusic;
+    private timeState currentState, lastState;
+   
     void Start()
     {
         SetUp();
@@ -24,7 +32,8 @@ public class TIMER : MonoBehaviour
     void Update()
     {
         RefreshTimeOnUI();
-        RefreshColour();
+        RefreshColourAndMusic();
+        CheckStateAndChangeMusic();
 
         if (endingGame)
         {
@@ -40,7 +49,7 @@ public class TIMER : MonoBehaviour
     {
         timeDisplayed.text = currentMinutes.ToString() + ":" + currentSeconds.ToString();
     }
-    void RefreshColour()
+    void RefreshColourAndMusic()
     {
         if (currentMinutes <= 0)
         {
@@ -48,27 +57,32 @@ public class TIMER : MonoBehaviour
             {
                 col = Color.green;
                 timeDisplayed.color = col;
+                currentState = timeState.okay;
             }
             else if (currentSeconds >= 15)
             {
                 col = Color.yellow;
                 timeDisplayed.color = col;
+                currentState = timeState.late;
             }
             else if (currentSeconds > 0)
             {
                 col = Color.red;
                 timeDisplayed.color = col;
+                currentState = timeState.hurry;
             }
             else
             {
                 col = Color.black;
                 timeDisplayed.color = col;
+                currentState = timeState.hurry;
             }
         }
         else
         {
             col = Color.green;
             timeDisplayed.color = col;
+            currentState = timeState.okay;
         }
     }
 
@@ -113,9 +127,10 @@ public class TIMER : MonoBehaviour
         {
             Time.timeScale -= 0.01f;
 
-            if (Time.timeScale <= 0.002f)
+            if (Time.timeScale <= 0.02f)
             {
                 endingGame = false;
+                Time.timeScale = 0.02f;
                 StartCoroutine(WaitUntilSpeedUp());
             }
         }
@@ -123,7 +138,7 @@ public class TIMER : MonoBehaviour
 
     IEnumerator WaitUntilSpeedUp()
     {
-        yield return new WaitForSecondsRealtime(3.0f);
+        yield return new WaitForSecondsRealtime(2.0f);
         resettingGame = true;
     }
 
@@ -157,11 +172,46 @@ public class TIMER : MonoBehaviour
         currentSeconds = startingSeconds;
     }
 
+    void CheckStateAndChangeMusic()
+    {
+        if (currentState != lastState)
+        {
+            if (currentMinutes <= 0)
+            {
+                if (currentSeconds >= 30)
+                {
+                    grumble.GetComponent<MUSIC>().ChangeLayer(0, fadeTimeForMusic);
+                }
+                else if (currentSeconds >= 15)
+                {
+                    grumble.GetComponent<MUSIC>().ChangeLayer(1, fadeTimeForMusic);
+                }
+                else if (currentSeconds > 0)
+                {
+                    grumble.GetComponent<MUSIC>().ChangeLayer(2, fadeTimeForMusic);
+                }
+                else
+                {
+                    grumble.GetComponent<MUSIC>().ChangeLayer(2, fadeTimeForMusic);
+                }
+            }
+            else
+            {
+                grumble.GetComponent<MUSIC>().ChangeLayer(0, fadeTimeForMusic);
+            }
+            lastState = currentState;
+        } 
+    }
+
     void SetUp()
     {
         // Set Time
         currentMinutes = startMinutes;
         currentSeconds = startingSeconds;
+
+        // Set the current and last state
+        currentState = timeState.okay;
+        lastState = currentState;
 
         // Create color
         col = new Color();
