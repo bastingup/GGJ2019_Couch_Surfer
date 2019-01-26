@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sirenix.OdinInspector;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,21 @@ public class SofaController : MonoBehaviour {
     private Rigidbody rb;
     [SerializeField]
     private float speed, jumpForce;
-    private bool grounded;
+    [SerializeField, ReadOnly]
+    private bool groundedCollision, groundedRay;
+    [SerializeField]
+    private Transform[] rayPositions;
+    [SerializeField]
+    private LayerMask groundedLayerMask;
+    [SerializeField]
+    private float maxGroundedDistance;
+    private bool wantJump;
+
+    private bool Grounded {
+        get {
+            return groundedCollision || groundedRay;
+        }
+    }
 
 	void Start ()
     {
@@ -18,13 +33,31 @@ public class SofaController : MonoBehaviour {
 
 	void Update ()
     {
-		if (Input.GetButton("Drive") && grounded)
+        if (Input.GetButtonDown("Jump") && Grounded)
         {
-            rb.AddForce(Vector3.forward * speed);
+            wantJump = true;
         }
-        if (Input.GetButtonDown("Jump") && grounded)
+
+
+    }
+
+    private void FixedUpdate()
+    {
+        groundedRay = false;
+
+        for (int i = 0; i < rayPositions.Length; i++)
+        {
+            Debug.DrawRay(rayPositions[i].position, -rayPositions[i].up * maxGroundedDistance,Color.magenta);
+            if (Physics.Raycast(rayPositions[i].position, -rayPositions[i].up, maxGroundedDistance, groundedLayerMask.value))
+            {
+                groundedRay = true;
+                break;
+            }
+        }
+        if (wantJump)
         {
             rb.AddForce(Vector3.up * jumpForce);
+            wantJump = false;
         }
         if (Input.GetButton("Forward"))
         {
@@ -34,8 +67,10 @@ public class SofaController : MonoBehaviour {
         {
             rb.rotation *= Quaternion.Euler(0, 0, 80 * Time.deltaTime);
         }
-
-
+        if (Input.GetButton("Drive") && Grounded)
+        {
+            rb.AddForce(Vector3.forward * speed);
+        }
     }
 
     internal void Boost(float boostValue)
@@ -47,7 +82,7 @@ public class SofaController : MonoBehaviour {
     {
         if (collision.collider.tag == "Ground")
         {
-            grounded = true;
+            groundedCollision = true;
         }
     }
 
@@ -55,7 +90,7 @@ public class SofaController : MonoBehaviour {
     {
         if (collision.collider.tag == "Ground")
         {
-            grounded = false;
+            groundedCollision = false;
         }
     }
 
