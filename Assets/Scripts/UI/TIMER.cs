@@ -11,26 +11,33 @@ public class TIMER : MonoBehaviour
     private Color col;
     [SerializeField]
     private readonly FloatReference addTime;
-    private bool endingGame = false;
+    private bool endingGame = false, resettingGame = false;
 
     void Start()
     {
         SetUp();
         InvokeRepeating("DeductTime", 1.0f, 1.0f);
     }
-    
 
     void Update()
     {
         RefreshTimeOnUI();
         RefreshColour();
+
+        if (endingGame)
+        {
+            SlowDownTime();
+        }
+        else if (resettingGame)
+        {
+            SpeedUpTime();
+        }
     }
 
     void RefreshTimeOnUI()
     {
         timeDisplayed.text = currentMinutes.ToString() + ":" + currentSeconds.ToString();
     }
-
     void RefreshColour()
     {
         if (currentMinutes <= 0)
@@ -75,10 +82,9 @@ public class TIMER : MonoBehaviour
             currentSeconds += 60 - currentSeconds;
         }
     }
-
     void DeductTime()
     {
-        if (!endingGame)
+        if (!endingGame && !resettingGame)
         {
             if (currentSeconds > 0)
             {
@@ -91,39 +97,56 @@ public class TIMER : MonoBehaviour
             }
             else
             {
-                GameObject.Find("HOMELESS").SetActive(true);
+                //GameObject.Find("HOMELESS").SetActive(true);
                 endingGame = true;
-                SlowDownTime();
             }
         }
     }
 
     void SlowDownTime()
     {
-        while (true)
+        Debug.Log("Scaling down time");
+
+        if (endingGame)
         {
             Time.timeScale -= 0.01f;
 
-            Debug.Log(Time.timeScale);
-
-            if (Time.timeScale == 0.0f)
+            if (Time.timeScale <= 0.002f)
             {
-                ResetGame();
+                resettingGame = true;
+                endingGame = false;
             }
         }
     }
 
-    void ResetGame()
+    void SpeedUpTime()
     {
-        Time.timeScale += 0.01f;
+        Debug.Log("Scaling Time back up");
 
-        Debug.Log(Time.timeScale);
-
-        if (Time.timeScale == 1.0f)
+        if (resettingGame)
         {
-            Debug.Log("Resetted Game");
-            endingGame = false;
+            Time.timeScale += 0.01f;
+            if (Time.timeScale >= 0.98f)
+            {
+                Time.timeScale = 1.0f;
+
+                ResetPlayerPosition();
+                FillUpCurrentTime();
+                
+                resettingGame = false;
+            }
         }
+    }
+
+    void ResetPlayerPosition()
+    {
+
+    }
+
+    void FillUpCurrentTime()
+    {
+        currentMinutes = startMinutes;
+        currentSeconds = startingSeconds;
     }
 
     void SetUp()

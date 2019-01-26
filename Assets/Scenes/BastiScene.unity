@@ -313,22 +313,22 @@ PrefabInstance:
     - target: {fileID: 6335174198228680323, guid: 95605bd0f0ea28148a51de5c252cb5fd,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000000003950071
+      value: 0.00000001909222
       objectReference: {fileID: 0}
     - target: {fileID: 6335174198228680323, guid: 95605bd0f0ea28148a51de5c252cb5fd,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.3959301
+      value: -0.3959588
       objectReference: {fileID: 0}
     - target: {fileID: 6335174198228680323, guid: 95605bd0f0ea28148a51de5c252cb5fd,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000017031341
+      value: 0.0000000082325995
       objectReference: {fileID: 0}
     - target: {fileID: 6335174198228680323, guid: 95605bd0f0ea28148a51de5c252cb5fd,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9182807
+      value: 0.9182683
       objectReference: {fileID: 0}
     - target: {fileID: 6335174198228680323, guid: 95605bd0f0ea28148a51de5c252cb5fd,
         type: 3}
@@ -582,7 +582,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -745,10 +745,10 @@ RectTransform:
   m_Father: {fileID: 1028940273}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 126.1}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 193}
+  m_SizeDelta: {x: -640, y: -420}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1438979555
 MonoBehaviour:
@@ -772,10 +772,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 16
+    m_FontSize: 26
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 1
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 1
     m_AlignByGeometry: 0
@@ -796,8 +796,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c101bbb2ed13eb4995debc8ad743d74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMinutes: 0
-  startingSeconds: 2
+  startMinutes: 1
+  startingSeconds: 0
 --- !u!222 &1438979557
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -913,7 +913,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1768243595}
   m_Layer: 0
-  m_Name: Pedestrian_TARGET
+  m_Name: END_OF_MAP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -927,7 +927,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1768243594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.0382633, y: -1.6976955, z: -7.89}
+  m_LocalPosition: {x: -2.03, y: -1.33, z: -7.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1693,22 +1693,22 @@ PrefabInstance:
     - target: {fileID: 7694009468427517724, guid: 97a29360616fbfa449a340397b02a7f5,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000000003950071
+      value: 0.00000001909222
       objectReference: {fileID: 0}
     - target: {fileID: 7694009468427517724, guid: 97a29360616fbfa449a340397b02a7f5,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.3959301
+      value: -0.3959588
       objectReference: {fileID: 0}
     - target: {fileID: 7694009468427517724, guid: 97a29360616fbfa449a340397b02a7f5,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000017031341
+      value: 0.0000000082325995
       objectReference: {fileID: 0}
     - target: {fileID: 7694009468427517724, guid: 97a29360616fbfa449a340397b02a7f5,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9182807
+      value: 0.9182683
       objectReference: {fileID: 0}
     - target: {fileID: 7694009468427517724, guid: 97a29360616fbfa449a340397b02a7f5,
         type: 3}
