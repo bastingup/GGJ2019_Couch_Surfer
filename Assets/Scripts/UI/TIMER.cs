@@ -115,7 +115,6 @@ public class TIMER : MonoBehaviour
             {
                 //GameObject.Find("HOMELESS").SetActive(true);
                 endingGame = true;
-                FindObjectOfType<HomelessScreen>().FadeIn();
             }
         }
     }
@@ -141,7 +140,6 @@ public class TIMER : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(2.0f);
         resettingGame = true;
-        FindObjectOfType<HomelessScreen>().FadeOut();
     }
 
     void SpeedUpTime()
