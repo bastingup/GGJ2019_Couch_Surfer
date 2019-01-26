@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - InViewCanvas
+  - ChatCam
   layers:
   - Default
   - TransparentFX
