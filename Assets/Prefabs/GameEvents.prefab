@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4885448797779201271}
+  - component: {fileID: 5065279401740671617}
   m_Layer: 0
   m_Name: GameEvents
   m_TagString: Untagged
@@ -34,6 +35,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5065279401740671617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2227488868372796696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 353480e621f43b243801df96474e4f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inCanvasView: {fileID: 0}
 --- !u!1001 &1440535477152226329
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -126,11 +140,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Booster
       objectReference: {fileID: 0}
-    - target: {fileID: 327783951922969838, guid: 59687de8bd7fe864a958a3fe92dc17c6,
-        type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 327783951922969836, guid: 59687de8bd7fe864a958a3fe92dc17c6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -188,6 +197,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 327783951922969837, guid: 59687de8bd7fe864a958a3fe92dc17c6,
         type: 3}
+      propertyPath: triggerType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 327783951922969837, guid: 59687de8bd7fe864a958a3fe92dc17c6,
+        type: 3}
       propertyPath: sceneEvent
       value: 
       objectReference: {fileID: 11400000, guid: 090cd3388ffb1444b900999341fd8cc6,
@@ -196,11 +210,6 @@ PrefabInstance:
         type: 3}
       propertyPath: oneTimeTrigger
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 327783951922969837, guid: 59687de8bd7fe864a958a3fe92dc17c6,
-        type: 3}
-      propertyPath: triggerType
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59687de8bd7fe864a958a3fe92dc17c6, type: 3}
@@ -279,15 +288,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 327783951922969837, guid: 59687de8bd7fe864a958a3fe92dc17c6,
         type: 3}
+      propertyPath: triggerType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 327783951922969837, guid: 59687de8bd7fe864a958a3fe92dc17c6,
+        type: 3}
       propertyPath: sceneEvent
       value: 
       objectReference: {fileID: 11400000, guid: 3e2fd5b670fbb9344bae647ec6830316,
         type: 2}
-    - target: {fileID: 327783951922969837, guid: 59687de8bd7fe864a958a3fe92dc17c6,
-        type: 3}
-      propertyPath: triggerType
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59687de8bd7fe864a958a3fe92dc17c6, type: 3}
 --- !u!4 &1440535476595141181 stripped
@@ -365,15 +374,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 327783951922969837, guid: 59687de8bd7fe864a958a3fe92dc17c6,
         type: 3}
+      propertyPath: triggerType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 327783951922969837, guid: 59687de8bd7fe864a958a3fe92dc17c6,
+        type: 3}
       propertyPath: sceneEvent
       value: 
       objectReference: {fileID: 11400000, guid: 21a9edcc2f0b97d43aa1a79789e87dc7,
         type: 2}
-    - target: {fileID: 327783951922969837, guid: 59687de8bd7fe864a958a3fe92dc17c6,
-        type: 3}
-      propertyPath: triggerType
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59687de8bd7fe864a958a3fe92dc17c6, type: 3}
 --- !u!4 &1440535476844965598 stripped
