@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class TIMER : MonoBehaviour
 {
@@ -22,7 +24,8 @@ public class TIMER : MonoBehaviour
     [SerializeField]
     private float fadeTimeForMusic;
     private timeState currentState, lastState;
-   
+    private bool deductTime;
+
     void Start()
     {
         SetUp();
@@ -34,15 +37,6 @@ public class TIMER : MonoBehaviour
         RefreshTimeOnUI();
         RefreshColourAndMusic();
         CheckStateAndChangeMusic();
-
-        if (endingGame)
-        {
-            SlowDownTime();
-        }
-        else if (resettingGame)
-        {
-            SpeedUpTime();
-        }
     }
 
     void RefreshTimeOnUI()
@@ -100,7 +94,7 @@ public class TIMER : MonoBehaviour
     }
     void DeductTime()
     {
-        if (!endingGame && !resettingGame)
+        if (deductTime)
         {
             if (currentSeconds > 0)
             {
@@ -113,52 +107,33 @@ public class TIMER : MonoBehaviour
             }
             else
             {
-                //GameObject.Find("HOMELESS").SetActive(true);
-                endingGame = true;
+                StartCoroutine(Homeless());
             }
         }
     }
 
-    void SlowDownTime()
+    private IEnumerator Homeless()
     {
-        Debug.Log("Scaling down time");
+        deductTime = false;
 
-        if (endingGame)
-        {
-            Time.timeScale -= 0.01f;
+        float fadeTime = 1;
+        float staySlowTime = 1;
+        float slowTimeScale = 0.2f;
 
-            if (Time.timeScale <= 0.02f)
-            {
-                endingGame = false;
-                Time.timeScale = 0.02f;
-                StartCoroutine(WaitUntilSpeedUp());
-            }
-        }
-    }
+        FindObjectOfType<HomelessScreen>().FadeIn();
+        DOTween.To(scale => Time.timeScale = scale, Time.timeScale, slowTimeScale, fadeTime).timeScale=1;
+        yield return new WaitForSecondsRealtime(fadeTime);
 
-    IEnumerator WaitUntilSpeedUp()
-    {
-        yield return new WaitForSecondsRealtime(2.0f);
+        yield return new WaitForSecondsRealtime(staySlowTime);
+
+        DOTween.To(scale => Time.timeScale = scale, Time.timeScale, 1, fadeTime).timeScale = 1;
+        FindObjectOfType<HomelessScreen>().FadeOut();
+        yield return new WaitForSecondsRealtime(fadeTime);
+
+        deductTime = true;
         resettingGame = true;
-    }
-
-    void SpeedUpTime()
-    {
-        Debug.Log("Scaling Time back up");
-
-        if (resettingGame)
-        {
-            Time.timeScale += 0.01f;
-            if (Time.timeScale >= 0.98f)
-            {
-                Time.timeScale = 1.0f;
-
-                ResetPlayerPosition();
-                FillUpCurrentTime();
-                
-                resettingGame = false;
-            }
-        }
+        ResetPlayerPosition();
+        FillUpCurrentTime();
     }
 
     void ResetPlayerPosition()
@@ -208,6 +183,7 @@ public class TIMER : MonoBehaviour
         // Set Time
         currentMinutes = startMinutes;
         currentSeconds = startingSeconds;
+        deductTime = true;
 
         // Set the current and last state
         currentState = timeState.okay;
