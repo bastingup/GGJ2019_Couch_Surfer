@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class TIMER : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject startingPosition;
     public int startMinutes, startingSeconds;
     private int currentMinutes, currentSeconds;
     private Text timeDisplayed;
@@ -113,10 +115,16 @@ public class TIMER : MonoBehaviour
 
             if (Time.timeScale <= 0.002f)
             {
-                resettingGame = true;
                 endingGame = false;
+                StartCoroutine(WaitUntilSpeedUp());
             }
         }
+    }
+
+    IEnumerator WaitUntilSpeedUp()
+    {
+        yield return new WaitForSecondsRealtime(3.0f);
+        resettingGame = true;
     }
 
     void SpeedUpTime()
@@ -140,7 +148,7 @@ public class TIMER : MonoBehaviour
 
     void ResetPlayerPosition()
     {
-
+        GameObject.FindWithTag("Player").transform.position = startingPosition.transform.position;
     }
 
     void FillUpCurrentTime()
