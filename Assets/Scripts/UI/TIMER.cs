@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class TIMER : MonoBehaviour
 {
-    public int minutes, seconds;
+    public int startMinutes, startingSeconds;
+    private int currentMinutes, currentSeconds;
     private Text timeDisplayed;
     private Color col;
     [SerializeField]
@@ -27,24 +28,24 @@ public class TIMER : MonoBehaviour
 
     void RefreshTimeOnUI()
     {
-        timeDisplayed.text = minutes.ToString() + ":" + seconds.ToString();
+        timeDisplayed.text = currentMinutes.ToString() + ":" + currentSeconds.ToString();
     }
 
     void RefreshColour()
     {
-        if (minutes <= 0)
+        if (currentMinutes <= 0)
         {
-            if (seconds >= 30)
+            if (currentSeconds >= 30)
             {
                 col = Color.green;
                 timeDisplayed.color = col;
             }
-            else if (seconds >= 15)
+            else if (currentSeconds >= 15)
             {
                 col = Color.yellow;
                 timeDisplayed.color = col;
             }
-            else if (seconds > 0)
+            else if (currentSeconds > 0)
             {
                 col = Color.red;
                 timeDisplayed.color = col;
@@ -64,14 +65,14 @@ public class TIMER : MonoBehaviour
 
     public void AddTime()
     {
-        if (seconds <= 49)
+        if (currentSeconds <= 49)
         {
-            seconds += (int)addTime;
+            currentSeconds += (int)addTime;
         }
         else
         {
-            minutes++;
-            seconds += 60 - seconds;
+            currentMinutes++;
+            currentSeconds += 60 - currentSeconds;
         }
     }
 
@@ -79,18 +80,18 @@ public class TIMER : MonoBehaviour
     {
         if (!endingGame)
         {
-            if (seconds > 0)
+            if (currentSeconds > 0)
             {
-                seconds--;
+                currentSeconds--;
             }
-            else if (minutes > 0)
+            else if (currentMinutes > 0)
             {
-                minutes--;
-                seconds = 59;
+                currentMinutes--;
+                currentSeconds = 59;
             }
             else
             {
-                // Trigger HOMELESS END SCREEN
+                GameObject.Find("HOMELESS").SetActive(true);
                 endingGame = true;
                 SlowDownTime();
             }
@@ -114,7 +115,7 @@ public class TIMER : MonoBehaviour
 
     void ResetGame()
     {
-        Time.timeScale += 0.2f;
+        Time.timeScale += 0.01f;
 
         Debug.Log(Time.timeScale);
 
@@ -127,6 +128,10 @@ public class TIMER : MonoBehaviour
 
     void SetUp()
     {
+        // Set Time
+        currentMinutes = startMinutes;
+        currentSeconds = startingSeconds;
+
         // Create color
         col = new Color();
         col = Color.green;
