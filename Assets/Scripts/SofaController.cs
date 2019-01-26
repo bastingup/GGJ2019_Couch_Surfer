@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,6 +36,11 @@ public class SofaController : MonoBehaviour {
         }
 
 
+    }
+
+    internal void Boost(float boostValue)
+    {
+        rb.AddForce(Vector3.forward * speed * boostValue);
     }
 
     void OnCollisionStay(Collision collision)

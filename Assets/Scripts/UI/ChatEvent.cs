@@ -22,9 +22,15 @@ public class ChatEvent : SceneEvent
     [SerializeField]
     private float timeToShowUntilLastMessage;
 
-    public override void Play(Transform spawnRoot)
+    public override void Play()
     {
+        Transform spawnRoot = UIMaster.instance.inCanvasView;
         Instantiate(chatFieldPrefab, spawnRoot).ShowEvent(this);
+    }
+
+    public override string GetGizmoIcon()
+    {
+        return "cellphone1.png";
     }
 
     public ChatEntry[] ChatEntries {

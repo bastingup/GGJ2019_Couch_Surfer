@@ -4,5 +4,6 @@ using UnityEngine;
 
 public abstract class SceneEvent : ScriptableObject
 {
-    public abstract void Play(Transform spawnRoot);
+    public abstract void Play();
+    public abstract string GetGizmoIcon();
 }

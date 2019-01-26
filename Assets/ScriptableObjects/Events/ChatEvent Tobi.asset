@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66be2d88eb3c6444e9db5a0eeef8db49, type: 3}
-  m_Name: ChatEvent
+  m_Name: ChatEvent Tobi
   m_EditorClassIdentifier: 
   chatEntries:
   - sender: 0
@@ -33,7 +33,7 @@ MonoBehaviour:
     delay: 0.5
   chatFieldPrefab: {fileID: 6401272861345820214, guid: b4b2fdd56c0edb04f982f9faba26bc31,
     type: 3}
-  partnerName: Digga
+  partnerName: Tobi
   myFace: {fileID: 21300000, guid: 2fb1c22d915118b429b1983972423f10, type: 3}
-  partnerFace: {fileID: 21300000, guid: c883ab1ae463e0a4881739162bda886d, type: 3}
+  partnerFace: {fileID: 21300000, guid: fbf91b716357d384e99aac10e0dc9b0a, type: 3}
   timeToShowUntilLastMessage: 2
