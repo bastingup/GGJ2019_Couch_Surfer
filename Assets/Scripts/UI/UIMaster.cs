@@ -9,9 +9,18 @@ public class UIMaster : MonoBehaviour
 
     public Transform inCanvasView;
 
+    public static UIMaster Instance {
+        get {
+            if (instance == null)
+                instance = FindObjectOfType<UIMaster>();
+            return instance;
+
+        }
+    }
+
     private void Awake()
     {
-        if (instance)
+        if (instance && instance != this)
         {
             Destroy(gameObject);
             return;

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIEventMaster : MonoBehaviour
+public class UIEventTest : MonoBehaviour
 {
 
     public SceneEvent eventToTest;
@@ -12,11 +12,5 @@ public class UIEventMaster : MonoBehaviour
     void ShowEvent()
     {
         eventToTest.Play();
-    }
-
-    // Update is called once per frame
-    void Start()
-    {
-        ShowEvent();
     }
 }

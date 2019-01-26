@@ -24,7 +24,7 @@ public class ChatEvent : SceneEvent
 
     public override void Play()
     {
-        Transform spawnRoot = UIMaster.instance.inCanvasView;
+        Transform spawnRoot = UIMaster.Instance.inCanvasView;
         Instantiate(chatFieldPrefab, spawnRoot).ShowEvent(this);
     }
 
