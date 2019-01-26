@@ -41,7 +41,25 @@ public class TIMER : MonoBehaviour
 
     void RefreshTimeOnUI()
     {
-        timeDisplayed.text = currentMinutes.ToString() + ":" + currentSeconds.ToString();
+        if (currentMinutes < 10)
+        {
+            timeDisplayed.text = "0" + currentMinutes.ToString();
+        }
+        else if (currentMinutes >= 10)
+        {
+            timeDisplayed.text = currentMinutes.ToString();
+        }
+
+        timeDisplayed.text += ":";
+
+        if (currentSeconds < 10)
+        {
+            timeDisplayed.text += "0" + currentSeconds.ToString();
+        }
+        else if (currentSeconds >= 10)
+        {
+            timeDisplayed.text += currentSeconds.ToString();
+        }
     }
     void RefreshColourAndMusic()
     {
