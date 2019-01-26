@@ -32,6 +32,9 @@ Transform:
   - {fileID: 1440535476844965598}
   - {fileID: 1440535476595141181}
   - {fileID: 1440535475914648844}
+  - {fileID: 1440535476495402294}
+  - {fileID: 1440535477373361878}
+  - {fileID: 1440535476108058353}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -58,7 +61,7 @@ PrefabInstance:
     - target: {fileID: 327783951922969838, guid: 59687de8bd7fe864a958a3fe92dc17c6,
         type: 3}
       propertyPath: m_Name
-      value: ChatTrigger Tan
+      value: ChatBonusTime
       objectReference: {fileID: 0}
     - target: {fileID: 327783951922969836, guid: 59687de8bd7fe864a958a3fe92dc17c6,
         type: 3}
@@ -120,6 +123,12 @@ PrefabInstance:
       propertyPath: triggerType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 327783951922969837, guid: 59687de8bd7fe864a958a3fe92dc17c6,
+        type: 3}
+      propertyPath: sceneEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 9bfc63401a29a7d4aa0e84bf43718710,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59687de8bd7fe864a958a3fe92dc17c6, type: 3}
 --- !u!4 &1689213415747264757 stripped
@@ -139,6 +148,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Booster
+      objectReference: {fileID: 0}
+    - target: {fileID: 327783951922969838, guid: 59687de8bd7fe864a958a3fe92dc17c6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 327783951922969836, guid: 59687de8bd7fe864a958a3fe92dc17c6,
         type: 3}
@@ -219,6 +233,66 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1689213414503387616}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1689213414661284381
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4885448797779201271}
+    m_Modifications:
+    - target: {fileID: 327783951922969838, guid: 59687de8bd7fe864a958a3fe92dc17c6,
+        type: 3}
+      propertyPath: m_Name
+      value: ChatTrigger Tobi (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 327783951922969836, guid: 59687de8bd7fe864a958a3fe92dc17c6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 327783951922969836, guid: 59687de8bd7fe864a958a3fe92dc17c6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 27.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 59687de8bd7fe864a958a3fe92dc17c6, type: 3}
+--- !u!4 &1440535476108058353 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 327783951922969836, guid: 59687de8bd7fe864a958a3fe92dc17c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1689213414661284381}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1689213415079967194
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4885448797779201271}
+    m_Modifications:
+    - target: {fileID: 327783951922969838, guid: 59687de8bd7fe864a958a3fe92dc17c6,
+        type: 3}
+      propertyPath: m_Name
+      value: ChatTrigger Tobi (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 327783951922969836, guid: 59687de8bd7fe864a958a3fe92dc17c6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 327783951922969836, guid: 59687de8bd7fe864a958a3fe92dc17c6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 57.33
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 59687de8bd7fe864a958a3fe92dc17c6, type: 3}
+--- !u!4 &1440535476495402294 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 327783951922969836, guid: 59687de8bd7fe864a958a3fe92dc17c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1689213415079967194}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1689213415181784785
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -239,12 +313,12 @@ PrefabInstance:
     - target: {fileID: 327783951922969836, guid: 59687de8bd7fe864a958a3fe92dc17c6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.2199998
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 327783951922969836, guid: 59687de8bd7fe864a958a3fe92dc17c6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.5
+      value: -2.8
       objectReference: {fileID: 0}
     - target: {fileID: 327783951922969836, guid: 59687de8bd7fe864a958a3fe92dc17c6,
         type: 3}
@@ -295,7 +369,7 @@ PrefabInstance:
         type: 3}
       propertyPath: sceneEvent
       value: 
-      objectReference: {fileID: 11400000, guid: 3e2fd5b670fbb9344bae647ec6830316,
+      objectReference: {fileID: 11400000, guid: 9bfc63401a29a7d4aa0e84bf43718710,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59687de8bd7fe864a958a3fe92dc17c6, type: 3}
@@ -315,7 +389,7 @@ PrefabInstance:
     - target: {fileID: 327783951922969838, guid: 59687de8bd7fe864a958a3fe92dc17c6,
         type: 3}
       propertyPath: m_Name
-      value: ChatTrigger Iara
+      value: ChatBonusTime
       objectReference: {fileID: 0}
     - target: {fileID: 327783951922969836, guid: 59687de8bd7fe864a958a3fe92dc17c6,
         type: 3}
@@ -381,7 +455,7 @@ PrefabInstance:
         type: 3}
       propertyPath: sceneEvent
       value: 
-      objectReference: {fileID: 11400000, guid: 21a9edcc2f0b97d43aa1a79789e87dc7,
+      objectReference: {fileID: 11400000, guid: 9bfc63401a29a7d4aa0e84bf43718710,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59687de8bd7fe864a958a3fe92dc17c6, type: 3}
@@ -390,4 +464,34 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 327783951922969836, guid: 59687de8bd7fe864a958a3fe92dc17c6,
     type: 3}
   m_PrefabInstance: {fileID: 1689213415400149554}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1689213415930651194
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4885448797779201271}
+    m_Modifications:
+    - target: {fileID: 327783951922969838, guid: 59687de8bd7fe864a958a3fe92dc17c6,
+        type: 3}
+      propertyPath: m_Name
+      value: ChatTrigger Tobi (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 327783951922969836, guid: 59687de8bd7fe864a958a3fe92dc17c6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 327783951922969836, guid: 59687de8bd7fe864a958a3fe92dc17c6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 39.56
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 59687de8bd7fe864a958a3fe92dc17c6, type: 3}
+--- !u!4 &1440535477373361878 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 327783951922969836, guid: 59687de8bd7fe864a958a3fe92dc17c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1689213415930651194}
   m_PrefabAsset: {fileID: 0}

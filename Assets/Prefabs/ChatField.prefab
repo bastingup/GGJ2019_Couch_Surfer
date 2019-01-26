@@ -420,6 +420,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chatFieldRoot: {fileID: 1685743153555825823}
   chatHeader: {fileID: 6505050607190433571}
+  reference:
+    UseConstant: 0
+    ConstantValue: 50
+    Variable: {fileID: 0}
   chatEntryPrefab: {fileID: 2181814101337834812, guid: bce8fa243991f9a4abfef7cf322c87ca,
     type: 3}
 --- !u!225 &4205528513922135510

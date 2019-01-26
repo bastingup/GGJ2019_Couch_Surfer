@@ -17,6 +17,15 @@ public class ChatFieldObject : MonoBehaviour
     private CanvasGroup canvasGroup;
     private float fadeDuration = 0.1f;
 
+    private ChatDialog currentDialog;
+    private ChatDialog nextDialog;
+
+    [SerializeField]
+    private ChatEntryObject chatEntryPrefab;
+
+    private ITriggerable waitForTrigger;
+    private ChatMission chatMission;
+
     private void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
@@ -24,36 +33,80 @@ public class ChatFieldObject : MonoBehaviour
         canvasGroup.DOFade(1, fadeDuration);
     }
 
-    [SerializeField]
-    private ChatEntryObject chatEntryPrefab;
+    public void SetNextDialog(ChatDialog dialog)
+    {
+        nextDialog = dialog;
 
-    public void ShowEvent(ChatEvent chatEvent)
+        if(waitForTrigger != null)
+            waitForTrigger.SetTrigger();
+    }
+
+    public void PlayNextChatDialog()
+    {
+        PlayRandomDialog(chatMission.bonusTimeDialogs);
+    }
+
+    public void PlayCoolMoveDialog()
+    {
+        PlayRandomDialog(chatMission.coolMoveDialogs);
+    }
+
+    private void PlayRandomDialog(ChatDialog[] dialogs)
+    {
+        int choice = UnityEngine.Random.Range(0, dialogs.Length);
+        ChatDialog dialogToShow = dialogs[choice];
+        SetNextDialog(dialogToShow);
+    }
+
+    public void ShowMission(ChatMission chatEvent)
     {
         StartCoroutine(Show(chatEvent));
     }
 
 
-    private IEnumerator Show(ChatEvent chatEvent)
+    private IEnumerator Show(ChatMission chatEvent)
     {
+        this.chatMission = chatEvent;
         chatHeader.text = "Chat with " + chatEvent.PartnerName;
 
-        for (int i = 0; i < chatEvent.ChatEntries.Length; i++)
+        currentDialog = chatEvent.startDialog;
+
+        while(true)
         {
-            ChatEntry entry = chatEvent.ChatEntries[i];
-
-            yield return new WaitForSeconds(entry.Delay);
-
-            ChatEntryObject chatEntryObject = Instantiate(chatEntryPrefab, chatFieldRoot);
-            if (entry.SenderType == ChatEntry.Sender.other)
+            for (int i = 0; i < currentDialog.DialogLines.Length; i++)
             {
-                chatEntryObject.FadeIn(entry.Message, true, chatEvent.PartnerFace);
-            }
-            else
-            {
-                chatEntryObject.FadeIn(entry.Message, false, chatEvent.MyFace);
+                ChatEntry entry = currentDialog.DialogLines[i];
+
+                yield return waitForTrigger = new ChatWaitForTimeOrTrigger(entry.Delay);
+
+                if (waitForTrigger.IsTriggered())
+                    break;
+
+                ChatEntryObject chatEntryObject = Instantiate(chatEntryPrefab, chatFieldRoot);
+                if (entry.SenderType == ChatEntry.Sender.other)
+                {
+                    chatEntryObject.FadeIn(entry.Message, true, chatEvent.PartnerFace);
+                }
+                else
+                {
+                    chatEntryObject.FadeIn(entry.Message, false, chatEvent.MyFace);
+                }
             }
 
+            if (currentDialog == chatEvent.endDialog)
+                break;
+
+
+            if(nextDialog == null)
+            {
+                //Have to wait for next dialog
+                currentDialog = null;
+                yield return waitForTrigger = new ChatWaitForTrigger();
+            }
+            currentDialog = nextDialog;
+            nextDialog = null;
         }
+
 
         yield return new WaitForSeconds(chatEvent.TimeToShowUntilLastMessage);
 
@@ -63,12 +116,64 @@ public class ChatFieldObject : MonoBehaviour
 
         Destroy(gameObject);
     }
+}
 
-    private void AddChatBubble(ChatEntry chatEntry)
+public class ChatWaitForTimeOrTrigger : CustomYieldInstruction, ITriggerable
+{
+
+    private float endTime;
+    private bool wait;
+
+    public ChatWaitForTimeOrTrigger(float secondsToWait)
     {
-
+        endTime = Time.time + secondsToWait;
+        wait = true;
     }
 
+    public void SetTrigger()
+    {
+        wait = false;
+    }
 
+    public bool IsTriggered()
+    {
+        return !wait;
+    }
 
+    public override bool keepWaiting {
+        get {
+            return wait && Time.time < endTime;
+        }
+    }
+}
+public class ChatWaitForTrigger : CustomYieldInstruction, ITriggerable
+{
+    private bool wait;
+
+    public ChatWaitForTrigger()
+    {
+        wait = true;
+    }
+
+    public void SetTrigger()
+    {
+        wait = false;
+    }
+
+    public bool IsTriggered()
+    {
+        return !wait;
+    }
+
+    public override bool keepWaiting {
+        get {
+            return wait;
+        }
+    }
+}
+
+public interface ITriggerable
+{
+    void SetTrigger();
+    bool IsTriggered();
 }
