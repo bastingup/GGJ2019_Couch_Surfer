@@ -25,6 +25,7 @@ public class ChatFieldObject : MonoBehaviour
 
     private ITriggerable waitForTrigger;
     private ChatMission chatMission;
+    private float lastDialogTime;
 
     private void Awake()
     {
@@ -51,8 +52,30 @@ public class ChatFieldObject : MonoBehaviour
         PlayRandomDialog(chatMission.coolMoveDialogs);
     }
 
+
+    public void PlayTimeDialog()
+    {
+        switch (FindObjectOfType<TIMER>().currentState)
+        {
+            case TIMER.timeState.okay:
+                PlayRandomDialog(chatMission.notLateDialog);
+                break;
+            case TIMER.timeState.late:
+                PlayRandomDialog(chatMission.lateDialog);
+                break;
+            case TIMER.timeState.hurry:
+                PlayRandomDialog(chatMission.veryLateDialog);
+                break;
+            default:
+                return;
+        }
+
+    }
+
     private void PlayRandomDialog(ChatDialog[] dialogs)
     {
+        lastDialogTime = Time.time;
+
         int choice = UnityEngine.Random.Range(0, dialogs.Length);
         ChatDialog dialogToShow = dialogs[choice];
         SetNextDialog(dialogToShow);
@@ -60,9 +83,18 @@ public class ChatFieldObject : MonoBehaviour
 
     public void ShowMission(ChatMission chatEvent)
     {
+        lastDialogTime = 999999999;
         StartCoroutine(Show(chatEvent));
     }
 
+    private void Update()
+    {
+        if(lastDialogTime + 10 < Time.time)
+        {
+            PlayTimeDialog();
+        }
+
+    }
 
     private IEnumerator Show(ChatMission chatEvent)
     {

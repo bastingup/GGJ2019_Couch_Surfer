@@ -10,10 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66be2d88eb3c6444e9db5a0eeef8db49, type: 3}
-  m_Name: ChatMission Tan
+  m_Name: ChatMission lvl2
   m_EditorClassIdentifier: 
   startDialog:
-    dialogLines: []
+    dialogLines:
+    - sender: 1
+      message: Hey bro 8=D bock auf den Brasilianischen Wursttaucher?
+      delay: 0
+    - sender: 0
+      message: "a mann brudi du wei\xDFt doch wie hart gern ich wursttauche"
+      delay: 1
+    - sender: 1
+      message: "dann schwing dich r\xFCber du luder"
+      delay: 1
   endDialog:
     dialogLines:
     - sender: 1
@@ -72,27 +81,10 @@ MonoBehaviour:
   lateDialog:
   - dialogLines:
     - sender: 1
-      message: "Digga, geht schon los\u2026 aber du hast den Film schon gesehen, ne?"
-      delay: 0
-  - dialogLines:
-    - sender: 1
-      message: Auflauf is fast fertig, leg ma nen Zahn zu
-      delay: 0
-  - dialogLines:
-    - sender: 1
       message: "Ich sitz hier ganz alleine und das Wasser wird schon kalt\u2026 kommst
         du vorbei und w\xE4rmst es wieder auf, bro?"
       delay: 0
   veryLateDialog:
-  - dialogLines:
-    - sender: 1
-      message: "Mann das is mega uncool grad, was is denn so Wichtig dass du mich
-        hier hocken l\xE4sst?"
-      delay: 0
-  - dialogLines:
-    - sender: 1
-      message: Mann mach hinne, ich will Unreal Tournament spielen!
-      delay: 0
   - dialogLines:
     - sender: 1
       message: Bruder ich hab mir wegen dir den Arsch rasiert, jetzt komm bei
@@ -100,19 +92,11 @@ MonoBehaviour:
   notLateDialog:
   - dialogLines:
     - sender: 1
-      message: Hab grad Bier kalt gestellt, heute wird mega!
-      delay: 0
-  - dialogLines:
-    - sender: 1
-      message: '[cha cha dancer emoji]'
-      delay: 0
-  - dialogLines:
-    - sender: 1
       message: Ich lass uns schonmal wasser in die wanne bro <3
       delay: 0
   chatFieldPrefab: {fileID: 6401272861345820214, guid: b4b2fdd56c0edb04f982f9faba26bc31,
     type: 3}
-  partnerName: Tan
+  partnerName: Iara
   myFace: {fileID: 21300000, guid: 2fb1c22d915118b429b1983972423f10, type: 3}
-  partnerFace: {fileID: 21300000, guid: 199680fa481e87b4dab48d6cd06d264a, type: 3}
+  partnerFace: {fileID: 21300000, guid: 1676a88f66e563046bcc72f973b071fc, type: 3}
   timeToShowUntilLastMessage: 2

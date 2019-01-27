@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66be2d88eb3c6444e9db5a0eeef8db49, type: 3}
-  m_Name: ChatMission Tobi
+  m_Name: ChatMission lvl0
   m_EditorClassIdentifier: 
   startDialog:
     dialogLines:

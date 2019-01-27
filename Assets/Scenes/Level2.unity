@@ -27537,7 +27537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef923d39711a9246af82abd923ffbd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mission: {fileID: 11400000, guid: 3e2fd5b670fbb9344bae647ec6830316, type: 2}
+  mission: {fileID: 11400000, guid: 3f97bc8e0f3acf443a2e04342fd3e97d, type: 2}
   chatFieldObjectPrefab: {fileID: 6401272861345820214, guid: b4b2fdd56c0edb04f982f9faba26bc31,
     type: 3}
 --- !u!4 &1042507980
