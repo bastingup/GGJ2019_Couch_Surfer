@@ -24,7 +24,7 @@ public class TIMER : MonoBehaviour
     private float fadeTimeForMusic;
     private timeState currentState, lastState;
     private bool deductTime;
-    private Quaternion startRotation;
+    private Quaternion startRotation = Quaternion.Euler(0,-270,0);
 
     void Start()
     {
@@ -170,7 +170,7 @@ public class TIMER : MonoBehaviour
 
     void ResetPlayerPosition()
     {
-        GameObject.FindWithTag("Player").transform.position = startingPosition.transform.position;
+        FindObjectOfType<SofaController>().transform.position = startingPosition.transform.position;
     }
 
     void FillUpCurrentTime()
@@ -212,7 +212,7 @@ public class TIMER : MonoBehaviour
 
     void RotatePlayerBackUp()
     {
-        GameObject.FindGameObjectWithTag("Player").transform.rotation = startRotation;
+        FindObjectOfType<SofaController>().transform.rotation = Quaternion.Euler(0, -270, 0);
     }
 
     void SetUp()
@@ -234,7 +234,5 @@ public class TIMER : MonoBehaviour
         timeDisplayed = GetComponent<Text>();
         timeDisplayed.color = col;
 
-        // Get initial position of player
-        startRotation = GameObject.FindGameObjectWithTag("Player").transform.rotation;
     }
 }

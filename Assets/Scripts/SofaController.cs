@@ -20,7 +20,7 @@ public class SofaController : MonoBehaviour {
     [SerializeField]
     private float maxGroundedDistance;
     private bool wantJump;
-    private Quaternion startRotation;
+    private Quaternion startRotation = Quaternion.Euler(0,-270,0);
 
 
     public bool Grounded {
@@ -103,6 +103,5 @@ public class SofaController : MonoBehaviour {
     void SetUp()
     {
         rb = GetComponent<Rigidbody>();
-        startRotation = GameObject.FindGameObjectWithTag("Player").transform.rotation;
     }
 }
