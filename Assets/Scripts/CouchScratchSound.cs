@@ -21,7 +21,7 @@ public class CouchScratchSound : MonoBehaviour
     void FixedUpdate()
     {
         Debug.Log(rb.velocity.magnitude);
-        if (!audio.isPlaying && rb.GetComponent<SofaController>().Grounded && rb.velocity.magnitude >= 1.0f)
+        if (!audio.isPlaying && rb.GetComponent<SofaController>().Grounded && rb.velocity.magnitude >= 3.0f)
         {
             audio.Play();
         }
@@ -36,5 +36,6 @@ public class CouchScratchSound : MonoBehaviour
         audio = GetComponent<AudioSource>();
         audio.loop = true;
         audio.playOnAwake = false;
+        audio.clip = clip;
     }
 }

@@ -126,7 +126,7 @@ public class TIMER : MonoBehaviour
             else
             {
                 StartCoroutine(Homeless());
-                //this.transform.Find("SOUND").GetComponent<UISounds>().PlayHomelessSound();
+                this.transform.Find("SOUND").GetComponent<UISounds>().PlayHomelessSound();
             }
         }
     }
