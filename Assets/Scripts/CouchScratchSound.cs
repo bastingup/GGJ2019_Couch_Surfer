@@ -18,9 +18,10 @@ public class CouchScratchSound : MonoBehaviour
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
-        if (!audio.isPlaying && rb.GetComponent<SofaController>().Grounded && rb.velocity.z > 1.0f)
+        Debug.Log(rb.velocity.magnitude);
+        if (!audio.isPlaying && rb.GetComponent<SofaController>().Grounded && rb.velocity.magnitude >= 1.0f)
         {
             audio.Play();
         }
