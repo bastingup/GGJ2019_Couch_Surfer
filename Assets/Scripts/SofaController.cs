@@ -22,7 +22,8 @@ public class SofaController : MonoBehaviour {
     private bool wantJump;
     private Quaternion startRotation;
 
-    private bool Grounded {
+
+    public bool Grounded {
         get {
             return groundedCollision || groundedRay;
         }
@@ -70,11 +71,7 @@ public class SofaController : MonoBehaviour {
         }
         if (Input.GetButton("Drive") && Grounded)
         {
-            // Old add force, was used to move forward, new Addforce is moving relatively to the lovalPosition
-            // rb.AddForce(Vector3.forward * speed);
-
             rb.AddRelativeForce(-Mathf.Sign(rb.transform.right.z) * Vector3.left * speed);
-
         }
         if (Input.GetButton("RotateBack"))
         {
