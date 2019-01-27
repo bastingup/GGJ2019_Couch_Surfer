@@ -102,12 +102,12 @@ public class TIMER : MonoBehaviour
     {
         if (currentSeconds <= 49)
         {
-            currentSeconds += (int)addTime;
+            currentSeconds += 10;
         }
         else
         {
-            currentMinutes++;
-            currentSeconds += 60 - currentSeconds;
+           currentMinutes++;
+           currentSeconds += 60 - currentSeconds;
         }
     }
     void DeductTime()
