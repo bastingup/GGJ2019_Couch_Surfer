@@ -107,7 +107,7 @@ public class TIMER : MonoBehaviour
         else
         {
            currentMinutes++;
-           currentSeconds += 60 - currentSeconds;
+           currentSeconds = 60 - currentSeconds;
         }
     }
     void DeductTime()
