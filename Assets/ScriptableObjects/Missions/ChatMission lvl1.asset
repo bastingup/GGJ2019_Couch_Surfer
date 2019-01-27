@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66be2d88eb3c6444e9db5a0eeef8db49, type: 3}
+  m_Name: ChatMission lvl1
+  m_EditorClassIdentifier: 
+  startDialog:
+    dialogLines:
+    - sender: 1
+      message: Bock auf Filme heute Abend? Kannst auch hier pennen.
+      delay: 0
+    - sender: 0
+      message: was denn so?
+      delay: 1
+    - sender: 1
+      message: keine ahnung, hab irgendwie bock auf trash filme
+      delay: 1
+    - sender: 0
+      message: Ja auf!
+      delay: 1
+  endDialog:
+    dialogLines:
+    - sender: 1
+      message: Weisste was? Vergiss es. Ich kann nicht glauben dass ich jetzt fucking
+        Twilight allein gucken musste ey.
+      delay: 0
+    - sender: 1
+      message: "Yo, meine Freundin is grad vorbei gekommen\u2026 bin jetzt bisschen
+        busy."
+      delay: 0
+    - sender: 1
+      message: "Der Michael hat grad geklingelt, hat sich also erledigt. Aber schade.
+        Ich dachte du w\xE4rst mein bro"
+      delay: 0
+  bonusTimeDialogs:
+  - dialogLines:
+    - sender: 0
+      message: "mach ma langsam, ich hab extra noch f\xFCr uns gedreht!"
+      delay: 0
+    - sender: 1
+      message: Alter echt jetzt?? Mega nice bruder
+      delay: 2.5
+  - dialogLines:
+    - sender: 0
+      message: Soll ich was von megges mitbringen?
+      delay: 0
+    - sender: 1
+      message: Jaa mann so chicken nuggets oder, du bist n echter Ehrenmann
+      delay: 2.5
+  - dialogLines:
+    - sender: 0
+      message: "Sorry bro, meine freundin hat angerufen und du wei\xDFt ja, frauen
+        und\u2026 m\xE4dchen und. Frauen und so."
+      delay: 0
+    - sender: 1
+      message: Ja kein Stress, ich kenns
+      delay: 2.5
+  - dialogLines:
+    - sender: 0
+      message: "Bin n bisschen sp\xE4ter, hatte noch Raid."
+      delay: 0
+    - sender: 1
+      message: Achso, dann ma GG
+      delay: 2.5
+  - dialogLines:
+    - sender: 0
+      message: Junge das Zeug gestern vom Timmi hat so hart geballert ich bekomm grad
+        nix auf Kette
+      delay: 0
+    - sender: 1
+      message: "Mach ma langsam, w\xE4r nicht so geil wenn du so hart reierst wie
+        letztes mal."
+      delay: 2.5
+  coolMoveDialogs:
+  - dialogLines: []
+  lateDialog:
+  - dialogLines:
+    - sender: 1
+      message: "Digga, geht schon los\u2026 aber du hast den Film schon gesehen, ne?"
+      delay: 0
+  - dialogLines:
+    - sender: 1
+      message: Auflauf is fast fertig, leg ma nen Zahn zu
+      delay: 0
+  veryLateDialog:
+  - dialogLines:
+    - sender: 1
+      message: Bruder ich hab mir wegen dir den Arsch rasiert, jetzt komm bei
+      delay: 0
+  notLateDialog:
+  - dialogLines:
+    - sender: 1
+      message: Hab grad Bier kalt gestellt, heute wird mega!
+      delay: 0
+  - dialogLines:
+    - sender: 1
+      message: '[cha cha dancer emoji]'
+      delay: 0
+  chatFieldPrefab: {fileID: 6401272861345820214, guid: b4b2fdd56c0edb04f982f9faba26bc31,
+    type: 3}
+  partnerName: Tan
+  myFace: {fileID: 21300000, guid: 2fb1c22d915118b429b1983972423f10, type: 3}
+  partnerFace: {fileID: 21300000, guid: 199680fa481e87b4dab48d6cd06d264a, type: 3}
+  timeToShowUntilLastMessage: 2
