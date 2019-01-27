@@ -126,7 +126,7 @@ public class TIMER : MonoBehaviour
             else
             {
                 StartCoroutine(Homeless());
-                this.transform.Find("SOUND").GetComponent<UISounds>().PlayHomelessSound();
+                
             }
         }
     }
@@ -138,6 +138,8 @@ public class TIMER : MonoBehaviour
 
     private IEnumerator Homeless()
     {
+        FindObjectOfType<UISounds>().PlayHomelessSound();
+
         deductTime = false;
 
         float fadeTime = 1;
