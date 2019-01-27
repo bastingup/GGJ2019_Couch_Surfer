@@ -7,7 +7,7 @@ using DG.Tweening;
 
 public class TIMER : MonoBehaviour
 {
-    private enum timeState
+    public enum timeState
     {
         okay, late, hurry
     }
@@ -22,7 +22,7 @@ public class TIMER : MonoBehaviour
     private bool endingGame = false, resettingGame = false;
     [SerializeField]
     private float fadeTimeForMusic;
-    private timeState currentState, lastState;
+    public timeState currentState, lastState;
     private bool deductTime;
     private Quaternion startRotation = Quaternion.Euler(0,-270,0);
 
