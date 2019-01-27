@@ -24,6 +24,7 @@ public class TIMER : MonoBehaviour
     private float fadeTimeForMusic;
     private timeState currentState, lastState;
     private bool deductTime;
+    private Quaternion startRotation;
 
     void Start()
     {
@@ -164,6 +165,7 @@ public class TIMER : MonoBehaviour
     {
         FindObjectOfType<EventsMaster>().ResetEvents();
         FindObjectOfType<Mission>().ResetMission();
+        RotatePlayerBackUp();
     }
 
     void ResetPlayerPosition()
@@ -208,6 +210,11 @@ public class TIMER : MonoBehaviour
         } 
     }
 
+    void RotatePlayerBackUp()
+    {
+        GameObject.FindGameObjectWithTag("Player").transform.rotation = startRotation;
+    }
+
     void SetUp()
     {
         // Set Time
@@ -226,5 +233,8 @@ public class TIMER : MonoBehaviour
         // Get UI Text and set color
         timeDisplayed = GetComponent<Text>();
         timeDisplayed.color = col;
+
+        // Get initial position of player
+        startRotation = GameObject.FindGameObjectWithTag("Player").transform.rotation;
     }
 }

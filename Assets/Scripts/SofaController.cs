@@ -20,6 +20,7 @@ public class SofaController : MonoBehaviour {
     [SerializeField]
     private float maxGroundedDistance;
     private bool wantJump;
+    private Quaternion startRotation;
 
     private bool Grounded {
         get {
@@ -39,8 +40,6 @@ public class SofaController : MonoBehaviour {
         {
             wantJump = true;
         }
-
-
     }
 
     private void FixedUpdate()
@@ -63,7 +62,7 @@ public class SofaController : MonoBehaviour {
         }
         if (Input.GetButton("Forward"))
         {
-            rb.rotation *= Quaternion.Euler(0, 0, -80 * Time.deltaTime);
+            rb.rotation *= Quaternion.Euler(0, 0, -140 * Time.deltaTime);
         }
         if (Input.GetButton("Backward"))
         {
@@ -71,7 +70,15 @@ public class SofaController : MonoBehaviour {
         }
         if (Input.GetButton("Drive") && Grounded)
         {
-            rb.AddForce(Vector3.forward * speed);
+            // Old add force, was used to move forward, new Addforce is moving relatively to the lovalPosition
+            // rb.AddForce(Vector3.forward * speed);
+
+            rb.AddRelativeForce(-Mathf.Sign(rb.transform.right.z) * Vector3.left * speed);
+
+        }
+        if (Input.GetButton("RotateBack"))
+        {
+            this.transform.SetPositionAndRotation(this.transform.position, startRotation);
         }
     }
 
@@ -99,6 +106,6 @@ public class SofaController : MonoBehaviour {
     void SetUp()
     {
         rb = GetComponent<Rigidbody>();
-
+        startRotation = GameObject.FindGameObjectWithTag("Player").transform.rotation;
     }
 }
