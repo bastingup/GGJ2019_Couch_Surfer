@@ -14,36 +14,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startDialog:
     dialogLines:
-    - sender: 0
-      message: Do you have a bed tonight?
-      delay: 0
     - sender: 1
-      message: Yea, but hurry!
-      delay: 1
+      message: Hab zu viel Suppe gemacht, hast du bock?
+      delay: 0
     - sender: 0
-      message: Cool!
+      message: Ja mann suppe ey ich liebe suppe
+      delay: 1
+    - sender: 1
+      message: Dann komm her sons is die weg
       delay: 1
   endDialog:
     dialogLines: []
   bonusTimeDialogs:
   - dialogLines:
     - sender: 0
-      message: Stay Cool, I'm coming!
+      message: Ich bring noch so bockwurst mit, ne?
       delay: 0
     - sender: 1
-      message: Okay.. I'll wait a bit longer
+      message: Bockwurst in suppe is mega geil, voll nice
       delay: 1
   - dialogLines:
     - sender: 0
-      message: Need more time!!
+      message: "Denk an deine di\xE4t digga, ess ma nicht den ganzen topf"
       delay: 0
     - sender: 1
-      message: '... fine ... '
+      message: mobb mich nicht und komm her jetzt
       delay: 1
   coolMoveDialogs: []
-  lateDialog: []
-  veryLateDialog: []
-  notLateDialog: []
+  lateDialog:
+  - dialogLines:
+    - sender: 1
+      message: ich fang dann schonma an, bruder.
+      delay: 0
+  veryLateDialog:
+  - dialogLines:
+    - sender: 1
+      message: "Jetzt junge, die schei\xDF Suppe wird kalt. Mach ma hinne"
+      delay: 0
+  notLateDialog:
+  - dialogLines:
+    - sender: 1
+      message: Ich stell nochma auf warm halten, ne?
+      delay: 0
   chatFieldPrefab: {fileID: 6401272861345820214, guid: b4b2fdd56c0edb04f982f9faba26bc31,
     type: 3}
   partnerName: Tobi

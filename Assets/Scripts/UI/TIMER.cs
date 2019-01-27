@@ -125,9 +125,14 @@ public class TIMER : MonoBehaviour
             else
             {
                 StartCoroutine(Homeless());
-                this.transform.Find("SOUND").GetComponent<UISounds>().PlayHomelessSound();
+                //this.transform.Find("SOUND").GetComponent<UISounds>().PlayHomelessSound();
             }
         }
+    }
+
+    public void Kill()
+    {
+        StartCoroutine(Homeless());
     }
 
     private IEnumerator Homeless()
@@ -135,8 +140,8 @@ public class TIMER : MonoBehaviour
         deductTime = false;
 
         float fadeTime = 1;
-        float staySlowTime = 1;
-        float slowTimeScale = 0.2f;
+        float staySlowTime = 2.5f;
+        float slowTimeScale = 0.1f;
 
         FindObjectOfType<HomelessScreen>().FadeIn();
         DOTween.To(scale => Time.timeScale = scale, Time.timeScale, slowTimeScale, fadeTime).timeScale=1;
@@ -152,6 +157,13 @@ public class TIMER : MonoBehaviour
         resettingGame = true;
         ResetPlayerPosition();
         FillUpCurrentTime();
+        ResetGameState();
+    }
+
+    private void ResetGameState()
+    {
+        FindObjectOfType<EventsMaster>().ResetEvents();
+        FindObjectOfType<Mission>().ResetMission();
     }
 
     void ResetPlayerPosition()

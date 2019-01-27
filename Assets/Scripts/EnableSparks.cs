@@ -9,6 +9,8 @@ public class EnableSparks : MonoBehaviour
     private ParticleSystem sparks;
     private bool sparksGrounded;
 
+    public bool emit;
+
     void Start()
     {
         SetUp();
@@ -19,11 +21,11 @@ public class EnableSparks : MonoBehaviour
         // Enable particle sparks if rigidbody over certain velocity on z axis
         if (rb.velocity.z < 0.5 || sparksGrounded == false)
         {
-            sparks.enableEmission = false;
+            sparks.enableEmission = emit = false;
         }
         else
         {
-            sparks.enableEmission = true;
+            sparks.enableEmission = emit = true;
         }
 
         // Set the speed for the spark particles
@@ -44,7 +46,7 @@ public class EnableSparks : MonoBehaviour
     {
         if (other.tag == "Ground" && rb.velocity.z > 1)
         {
-            sparks.enableEmission = true;
+            sparks.enableEmission = emit = true;
             sparksGrounded = true;
         }
     }

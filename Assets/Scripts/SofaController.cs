@@ -9,6 +9,8 @@ public class SofaController : MonoBehaviour {
     private Rigidbody rb;
     [SerializeField]
     private float speed, jumpForce;
+
+
     [SerializeField, ReadOnly]
     private bool groundedCollision, groundedRay;
     [SerializeField]

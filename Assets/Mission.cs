@@ -14,4 +14,17 @@ public class Mission : MonoBehaviour
         Transform spawnRoot = UIMaster.Instance.inCanvasView;
         Instantiate(chatFieldObjectPrefab, spawnRoot).ShowMission(mission);
     }
+
+    public void ResetMission()
+    {
+        Transform spawnRoot = UIMaster.Instance.inCanvasView;
+
+        for (int i = spawnRoot.childCount - 1; i >= 0; i--)
+        {
+            Destroy(spawnRoot.GetChild(i).gameObject);
+        }
+
+        Instantiate(chatFieldObjectPrefab, spawnRoot).ShowMission(mission);
+
+    }
 }

@@ -15,12 +15,101 @@ MonoBehaviour:
   startDialog:
     dialogLines: []
   endDialog:
-    dialogLines: []
-  bonusTimeDialogs: []
-  coolMoveDialogs: []
-  lateDialog: []
-  veryLateDialog: []
-  notLateDialog: []
+    dialogLines:
+    - sender: 1
+      message: Weisste was? Vergiss es. Ich kann nicht glauben dass ich jetzt fucking
+        Twilight allein gucken musste ey.
+      delay: 0
+    - sender: 1
+      message: "Yo, meine Freundin is grad vorbei gekommen\u2026 bin jetzt bisschen
+        busy."
+      delay: 0
+    - sender: 1
+      message: "Der Michael hat grad geklingelt, hat sich also erledigt. Aber schade.
+        Ich dachte du w\xE4rst mein bro"
+      delay: 0
+  bonusTimeDialogs:
+  - dialogLines:
+    - sender: 0
+      message: "mach ma langsam, ich hab extra noch f\xFCr uns gedreht!"
+      delay: 0
+    - sender: 1
+      message: Alter echt jetzt?? Mega nice bruder
+      delay: 2.5
+  - dialogLines:
+    - sender: 0
+      message: Soll ich was von megges mitbringen?
+      delay: 0
+    - sender: 1
+      message: Jaa mann so chicken nuggets oder, du bist n echter Ehrenmann
+      delay: 2.5
+  - dialogLines:
+    - sender: 0
+      message: "Sorry bro, meine freundin hat angerufen und du wei\xDFt ja, frauen
+        und\u2026 m\xE4dchen und. Frauen und so."
+      delay: 0
+    - sender: 1
+      message: Ja kein Stress, ich kenns
+      delay: 2.5
+  - dialogLines:
+    - sender: 0
+      message: "Bin n bisschen sp\xE4ter, hatte noch Raid."
+      delay: 0
+    - sender: 1
+      message: Achso, dann ma GG
+      delay: 2.5
+  - dialogLines:
+    - sender: 0
+      message: Junge das Zeug gestern vom Timmi hat so hart geballert ich bekomm grad
+        nix auf Kette
+      delay: 0
+    - sender: 1
+      message: "Mach ma langsam, w\xE4r nicht so geil wenn du so hart reierst wie
+        letztes mal."
+      delay: 2.5
+  coolMoveDialogs:
+  - dialogLines: []
+  lateDialog:
+  - dialogLines:
+    - sender: 1
+      message: "Digga, geht schon los\u2026 aber du hast den Film schon gesehen, ne?"
+      delay: 0
+  - dialogLines:
+    - sender: 1
+      message: Auflauf is fast fertig, leg ma nen Zahn zu
+      delay: 0
+  - dialogLines:
+    - sender: 1
+      message: "Ich sitz hier ganz alleine und das Wasser wird schon kalt\u2026 kommst
+        du vorbei und w\xE4rmst es wieder auf, bro?"
+      delay: 0
+  veryLateDialog:
+  - dialogLines:
+    - sender: 1
+      message: "Mann das is mega uncool grad, was is denn so Wichtig dass du mich
+        hier hocken l\xE4sst?"
+      delay: 0
+  - dialogLines:
+    - sender: 1
+      message: Mann mach hinne, ich will Unreal Tournament spielen!
+      delay: 0
+  - dialogLines:
+    - sender: 1
+      message: Bruder ich hab mir wegen dir den Arsch rasiert, jetzt komm bei
+      delay: 0
+  notLateDialog:
+  - dialogLines:
+    - sender: 1
+      message: Hab grad Bier kalt gestellt, heute wird mega!
+      delay: 0
+  - dialogLines:
+    - sender: 1
+      message: '[cha cha dancer emoji]'
+      delay: 0
+  - dialogLines:
+    - sender: 1
+      message: Ich lass uns schonmal wasser in die wanne bro <3
+      delay: 0
   chatFieldPrefab: {fileID: 6401272861345820214, guid: b4b2fdd56c0edb04f982f9faba26bc31,
     type: 3}
   partnerName: Tan
