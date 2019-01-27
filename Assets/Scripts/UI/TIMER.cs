@@ -212,7 +212,7 @@ public class TIMER : MonoBehaviour
 
     void RotatePlayerBackUp()
     {
-        GameObject.FindGameObjectWithTag("Player").transform.SetPositionAndRotation(this.transform.position, startRotation);
+        GameObject.FindGameObjectWithTag("Player").transform.rotation = startRotation;
     }
 
     void SetUp()
