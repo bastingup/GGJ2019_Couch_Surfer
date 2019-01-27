@@ -62,7 +62,7 @@ public class SofaController : MonoBehaviour {
         }
         if (Input.GetButton("Forward"))
         {
-            rb.rotation *= Quaternion.Euler(0, 0, -80 * Time.deltaTime);
+            rb.rotation *= Quaternion.Euler(0, 0, -140 * Time.deltaTime);
         }
         if (Input.GetButton("Backward"))
         {
@@ -73,7 +73,8 @@ public class SofaController : MonoBehaviour {
             // Old add force, was used to move forward, new Addforce is moving relatively to the lovalPosition
             // rb.AddForce(Vector3.forward * speed);
 
-            rb.AddRelativeForce(Vector3.left * speed);
+            rb.AddRelativeForce(-Mathf.Sign(rb.transform.right.z) * Vector3.left * speed);
+
         }
         if (Input.GetButton("RotateBack"))
         {
