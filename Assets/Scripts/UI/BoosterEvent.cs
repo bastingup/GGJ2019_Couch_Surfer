@@ -16,5 +16,6 @@ public class BoosterEvent : SceneEvent
     public override void Play()
     {
         FindObjectOfType<SofaController>().Boost(boostValue);
+        FindObjectOfType<AnimationMaster>().PlayFall();
     }
 }
