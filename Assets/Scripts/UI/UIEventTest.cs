@@ -11,6 +11,6 @@ public class UIEventTest : MonoBehaviour
     [Button]
     void ShowEvent()
     {
-        eventToTest.Play();
+        //eventToTest.Play();
     }
 }

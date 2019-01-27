@@ -13,9 +13,9 @@ public class BoosterEvent : SceneEvent
         return "speedup.png";
     }
 
-    public override void Play()
+    public override void Play(SceneEventTrigger sceneEventTrigger)
     {
-        FindObjectOfType<SofaController>().Boost(boostValue);
+        FindObjectOfType<SofaController>().Boost(boostValue, sceneEventTrigger.transform.forward);
         FindObjectOfType<AnimationMaster>().PlayFall();
     }
 }

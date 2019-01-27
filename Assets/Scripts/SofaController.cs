@@ -79,9 +79,9 @@ public class SofaController : MonoBehaviour {
         }
     }
 
-    internal void Boost(float boostValue)
+    internal void Boost(float boostValue, Vector3 direction)
     {
-        rb.AddRelativeForce(Vector3.forward * speed * boostValue);
+        rb.AddForce(direction * speed * boostValue);
     }
 
     void OnCollisionStay(Collision collision)

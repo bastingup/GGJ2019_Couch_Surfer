@@ -4,6 +4,6 @@ using UnityEngine;
 
 public abstract class SceneEvent : ScriptableObject
 {
-    public abstract void Play();
+    public abstract void Play(SceneEventTrigger sceneEventTrigger);
     public abstract string GetGizmoIcon();
 }

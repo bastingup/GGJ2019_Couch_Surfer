@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneEventTrigger : MonoBehaviour
 {
@@ -23,6 +25,17 @@ public class SceneEventTrigger : MonoBehaviour
             Gizmos.DrawIcon(transform.position, sceneEvent.GetGizmoIcon(), true);
     }
 
+    internal void Won()
+    {
+        //StartCoroutine(ToWon());
+        ToWon();
+    }
+    private void ToWon()
+    {
+        //yield return new WaitForSecondsRealtime(4);
+        SceneManager.LoadScene(6);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +56,7 @@ public class SceneEventTrigger : MonoBehaviour
             {
                 if (oneTimeTrigger)
                     Destroy(gameObject);
-                sceneEvent.Play();
+                sceneEvent.Play(this);
             }
         }
     }
@@ -55,7 +68,7 @@ public class SceneEventTrigger : MonoBehaviour
             {
                 if (oneTimeTrigger)
                     Destroy(gameObject);
-                sceneEvent.Play();
+                sceneEvent.Play(this);
             }
         }
     }

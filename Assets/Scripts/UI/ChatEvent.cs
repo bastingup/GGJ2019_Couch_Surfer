@@ -10,8 +10,9 @@ public class ChatEvent : SceneEvent
         return "cellphone1.png";
     }
 
-    public override void Play()
+    public override void Play(SceneEventTrigger sceneEventTrigger)
     {
         FindObjectOfType<ChatFieldObject>().PlayNextChatDialog();
+        FindObjectOfType<TIMER>().AddTime();
     }
 }

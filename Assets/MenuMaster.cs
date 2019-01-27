@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MenuMaster : MonoBehaviour
 {
+
+    private void Start()
+    {
+        Time.timeScale = 1;
+    }
+
     public void LoadLevel(int nr)
     {
         SceneManager.LoadSceneAsync(2);
